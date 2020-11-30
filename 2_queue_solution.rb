@@ -9,20 +9,20 @@
 require_relative 'my_queue.rb'
 
 #Time: O(n^2)
-#Space: O(n), where n is the array 
+#Space: O(n), where n is the size of the array 
 def windowed_max_range(array, window_size)
     max_range = nil
     queue = My_Queue.new
     array.each { |num| queue.enqueue(num) }
     window = []
-    (window_size - 1).times { window << queue.dequeue } #O(n)
+    (window_size - 1).times { window << queue.dequeue } #O(n^2) becauase we are using an array implementation for the queue
 
     until queue.empty? #O(n)
         window.push(queue.dequeue) #O(1)
         range = window.max - window.min #O(n)
         max_range ||= range #O(1)
         max_range = range if max_range < range #O(1)
-        window.shift #O(1)
+        window.shift #O(n)
     end
 
     max_range
