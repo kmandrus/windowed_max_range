@@ -10,7 +10,7 @@ require_relative 'my_queue.rb'
 
 #Time: O(n^2)
 #Space: O(n), where n is the size of the array 
-def windowed_max_range(array, window_size)
+def windowed_max_range_queue(array, window_size)
     max_range = nil
     queue = My_Queue.new
     array.each { |num| queue.enqueue(num) }
@@ -29,7 +29,7 @@ def windowed_max_range(array, window_size)
 end
 
 #Test Cases
-p windowed_max_range([1, 0, 2, 5, 4, 8], 2) == 4 # 4, 8
-p windowed_max_range([1, 0, 2, 5, 4, 8], 3) == 5 # 0, 2, 5
-p windowed_max_range([1, 0, 2, 5, 4, 8], 4) == 6 # 2, 5, 4, 8
-p windowed_max_range([1, 3, 2, 5, 4, 8], 5) == 6 # 3, 2, 5, 4, 8
+#p windowed_max_range([1, 0, 2, 5, 4, 8], 2) == 4 # 4, 8
+#p windowed_max_range([1, 0, 2, 5, 4, 8], 3) == 5 # 0, 2, 5
+#p windowed_max_range([1, 0, 2, 5, 4, 8], 4) == 6 # 2, 5, 4, 8
+#p windowed_max_range([1, 3, 2, 5, 4, 8], 5) == 6 # 3, 2, 5, 4, 8
