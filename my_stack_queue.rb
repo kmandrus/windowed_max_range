@@ -3,32 +3,30 @@ require_relative "my_stack.rb"
 class My_Stack_Queue
 
     def initialize
-        @stack_1 = My_Stack.new
-        @stack_2 = My_Stack.new
+        @in_stack = My_Stack.new
+        @out_stack = My_Stack.new
     end
 
     def size
-        @stack_2.size
+        @out_stack.size + @in_stack.size
     end
 
     def empty?
-        @stack_2.empty?
+        @out_stack.empty? && @in_stack.empty?
     end
 
     def enqueue(item)
-        unless @stack_2.empty?
-            until @stack_2.empty? do 
-                @stack_1.push(@stack_2.pop)
-            end
-        end
-        @stack_1.push(item)
-        until @stack_1.empty? do
-             @stack_2.push(@stack_1.pop)
-        end
+        @in_stack.push(item)
     end
 
     def dequeue
-        @stack_2.pop
+        empty_in_stack if @out_stack.empty?
+        @out_stack.pop
+    end
+
+    private
+    def empty_in_stack
+        @out_stack.push(@in_stack.pop) until @in_stack.empty?
     end
 
 end

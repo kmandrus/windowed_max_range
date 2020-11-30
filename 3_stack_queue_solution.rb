@@ -1,6 +1,5 @@
 #Stack_Queue implementation of windowed_max_range method. Uses a stack_queue
-#instead of a stack. Trades O(1) enqueue for O(1) dequeue. Still seems better
-#to use a linked list implementation for O(1) for both enqueue and dequeue...
+#instead of a stack. Has an O(1) enqueue and a dequeue that averages to O(1).
 
 #Given an array of numbers and a "window size," this method finds the maximum
 #range within that window size. For example, if I have an array:
